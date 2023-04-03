@@ -37,13 +37,28 @@ namespace ImageSorter
             recieveImageDialog.ShowDialog();
             recieveFolderTb.Text = recieveImageDialog.SelectedPath;
             recievedImageSelected = true;
-            /////This is for a different version
-            folderButtons.Clear();
+
             allDirectories = Directory.GetDirectories(recieveImageDialog.SelectedPath);
-            folderButtons = new List<Button>(allDirectories.Length);
+            folderButtons = new List<Button>();
+            //folderButtons.Clear();
+            Console.WriteLine(allDirectories.Length);
             for (int i = 0; i < allDirectories.Length; i++)
             {
-
+                var tempButton = new Button();
+                folderButtons.Add(tempButton);
+            }
+            for (int i = 0; i < allDirectories.Length; i++)
+            {
+                var dir = new DirectoryInfo(allDirectories[i]);
+                var dirName = dir.Name;
+                folderButtons[i].Location = new Point(100 * i, 800);
+                folderButtons[i].Name = allDirectories[i];
+                folderButtons[i].Size = new Size(100, 50);
+                folderButtons[i].TabIndex = 20;
+                folderButtons[i].Text = dirName;
+                folderButtons[i].UseVisualStyleBackColor = true;
+                folderButtons[i].Click += new EventHandler(FolderButton_Click);
+                Controls.Add(folderButtons[i]);
             }
         }
 
@@ -57,15 +72,25 @@ namespace ImageSorter
             }
         }
 
-        private void NextImageBtn_Click(object sender, EventArgs e)
+        private void DirImageBtn_Click(object sender, EventArgs e)
         {
             if (imagesFolderSelected && recievedImageSelected)
             {
                 //not meant for here
                 //File.Copy(allImages[imageCounter], recieveImageDialog.SelectedPath);
-                imageCounter++;
-                onlyPictureBox.ImageLocation = allImages[imageCounter];
+                //imageCounter++;
+                //onlyPictureBox.ImageLocation = allImages[imageCounter];
+                var result = Path.GetFileName(allImages[imageCounter]);
+                File.Move(allImages[imageCounter], $@"{recieveImageDialog.SelectedPath}\{result}");
             }
+        }
+
+        private void FolderButton_Click(object sender, EventArgs e) 
+        {
+            Button myB = (Button)sender;
+            var dir = new DirectoryInfo(allImages[imageCounter]);
+            var dirName = dir.Name;
+            File.Move(allImages[imageCounter], myB.Name);
         }
     }
 }

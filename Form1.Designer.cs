@@ -19,7 +19,7 @@ namespace ImageSorter
         private Button recieveFolderBtn;
         private TextBox imageFolderTb;
         private TextBox recieveFolderTb;
-        private Button nextImageBtn;
+        private Button DirImageBtn;
         private Button deleteImageBtn;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
 
@@ -55,7 +55,7 @@ namespace ImageSorter
             this.recieveFolderBtn = new System.Windows.Forms.Button();
             this.imageFolderTb = new System.Windows.Forms.TextBox();
             this.recieveFolderTb = new System.Windows.Forms.TextBox();
-            this.nextImageBtn = new System.Windows.Forms.Button();
+            this.DirImageBtn = new System.Windows.Forms.Button();
             this.deleteImageBtn = new System.Windows.Forms.Button();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             ((System.ComponentModel.ISupportInitialize)(this.onlyPictureBox)).BeginInit();
@@ -66,7 +66,7 @@ namespace ImageSorter
             // 
             this.onlyPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.onlyPictureBox.BackColor = System.Drawing.SystemColors.Control;
-            this.onlyPictureBox.Location = new System.Drawing.Point(770, 23);
+            this.onlyPictureBox.Location = new System.Drawing.Point(983, 23);
             this.onlyPictureBox.Name = "onlyPictureBox";
             this.onlyPictureBox.Size = new System.Drawing.Size(572, 380);
             this.onlyPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -107,15 +107,15 @@ namespace ImageSorter
             this.recieveFolderTb.Size = new System.Drawing.Size(146, 20);
             this.recieveFolderTb.TabIndex = 4;
             // 
-            // nextImageBtn
+            // DirImageBtn
             // 
-            this.nextImageBtn.Location = new System.Drawing.Point(63, 153);
-            this.nextImageBtn.Name = "nextImageBtn";
-            this.nextImageBtn.Size = new System.Drawing.Size(146, 57);
-            this.nextImageBtn.TabIndex = 5;
-            this.nextImageBtn.Text = "Next Image";
-            this.nextImageBtn.UseVisualStyleBackColor = true;
-            this.nextImageBtn.Click += new System.EventHandler(this.NextImageBtn_Click);
+            this.DirImageBtn.Location = new System.Drawing.Point(63, 153);
+            this.DirImageBtn.Name = "DirImageBtn";
+            this.DirImageBtn.Size = new System.Drawing.Size(146, 57);
+            this.DirImageBtn.TabIndex = 5;
+            this.DirImageBtn.Text = "In Directory";
+            this.DirImageBtn.UseVisualStyleBackColor = true;
+            this.DirImageBtn.Click += new System.EventHandler(this.DirImageBtn_Click);
             // 
             // deleteImageBtn
             // 
@@ -141,9 +141,9 @@ namespace ImageSorter
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1371, 770);
+            this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.deleteImageBtn);
-            this.Controls.Add(this.nextImageBtn);
+            this.Controls.Add(this.DirImageBtn);
             this.Controls.Add(this.recieveFolderTb);
             this.Controls.Add(this.imageFolderTb);
             this.Controls.Add(this.recieveFolderBtn);
@@ -156,6 +156,7 @@ namespace ImageSorter
             ((System.ComponentModel.ISupportInitialize)(this.onlyPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -165,6 +166,7 @@ namespace ImageSorter
         {
             imagesFolderSelected = false;
             recievedImageSelected = false;
+            axWindowsMediaPlayer1.settings.setMode("loop", true);
         }
 
         private void InitializeDirectoryButtons()
