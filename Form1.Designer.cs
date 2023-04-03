@@ -66,9 +66,9 @@ namespace ImageSorter
             // 
             this.onlyPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.onlyPictureBox.BackColor = System.Drawing.SystemColors.Control;
-            this.onlyPictureBox.Location = new System.Drawing.Point(983, 23);
+            this.onlyPictureBox.Location = new System.Drawing.Point(535, 53);
             this.onlyPictureBox.Name = "onlyPictureBox";
-            this.onlyPictureBox.Size = new System.Drawing.Size(572, 380);
+            this.onlyPictureBox.Size = new System.Drawing.Size(74, 56);
             this.onlyPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.onlyPictureBox.TabIndex = 0;
             this.onlyPictureBox.TabStop = false;
@@ -130,10 +130,10 @@ namespace ImageSorter
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(93, 357);
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(630, 28);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(462, 273);
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(923, 656);
             this.axWindowsMediaPlayer1.TabIndex = 7;
             // 
             // Form1
@@ -180,8 +180,11 @@ namespace ImageSorter
             {
                 allImages = Directory.GetFiles(imageFolderDialog.SelectedPath);
                 Debug.Print(allImages.Length.ToString());
-                onlyPictureBox.ImageLocation = allImages[imageCounter];
-                axWindowsMediaPlayer1.URL = allImages[imageCounter];
+                if (allImages.Length > 0) 
+                {
+                    //onlyPictureBox.ImageLocation = allImages[imageCounter];
+                    axWindowsMediaPlayer1.URL = allImages[imageCounter];
+                }    
             }
         }
     }

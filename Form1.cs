@@ -67,8 +67,7 @@ namespace ImageSorter
             if (imagesFolderSelected && recievedImageSelected)
             {
                 //System.IO.File.Delete(allImages[imageCounter]);
-                imageCounter++;
-                onlyPictureBox.ImageLocation = allImages[imageCounter];
+                LoadNewImages();
             }
         }
 
@@ -76,21 +75,34 @@ namespace ImageSorter
         {
             if (imagesFolderSelected && recievedImageSelected)
             {
-                //not meant for here
-                //File.Copy(allImages[imageCounter], recieveImageDialog.SelectedPath);
-                //imageCounter++;
-                //onlyPictureBox.ImageLocation = allImages[imageCounter];
                 var result = Path.GetFileName(allImages[imageCounter]);
-                File.Move(allImages[imageCounter], $@"{recieveImageDialog.SelectedPath}\{result}");
+                try
+                {
+                    File.Move(allImages[imageCounter], $@"{recieveImageDialog.SelectedPath}\{result}");
+                }
+                catch (IOException)
+                {
+                    FileInfo tempInfo = new FileInfo(allImages[imageCounter]);
+                    File.Move(allImages[imageCounter], $@"{recieveImageDialog.SelectedPath}\{Path.GetRandomFileName()}{tempInfo.Extension}");
+                }               
+                LoadNewImages();
             }
         }
 
         private void FolderButton_Click(object sender, EventArgs e) 
         {
             Button myB = (Button)sender;
-            var dir = new DirectoryInfo(allImages[imageCounter]);
-            var dirName = dir.Name;
-            File.Move(allImages[imageCounter], myB.Name);
+            var result = Path.GetFileName(allImages[imageCounter]);
+            try
+            {
+                File.Move(allImages[imageCounter], $@"{myB.Name}\{result}");
+            }
+            catch (IOException)
+            {
+                FileInfo tempInfo = new FileInfo(allImages[imageCounter]);
+                File.Move(allImages[imageCounter], $@"{myB.Name}\{Path.GetRandomFileName()}{tempInfo.Extension}");
+            }
+            LoadNewImages();
         }
     }
 }
