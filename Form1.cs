@@ -17,7 +17,6 @@ namespace ImageSorter
         {
             InitializeComponent();
             InitializeNonDesignComponents();
-            InitializeDirectoryButtons();
         }
 
 

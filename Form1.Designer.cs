@@ -169,10 +169,6 @@ namespace ImageSorter
             axWindowsMediaPlayer1.settings.setMode("loop", true);
         }
 
-        private void InitializeDirectoryButtons()
-        {
-        }
-
         private void LoadNewImages()
         {
             //get array of all images present in said folder
@@ -182,6 +178,7 @@ namespace ImageSorter
                 Debug.Print(allImages.Length.ToString());
                 if (allImages.Length > 0) 
                 {
+                    //use vlc media player
                     //onlyPictureBox.ImageLocation = allImages[imageCounter];
                     axWindowsMediaPlayer1.URL = allImages[imageCounter];
                 }    
