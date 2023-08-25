@@ -22,6 +22,7 @@ namespace ImageSorter
         private Button DirImageBtn;
         private Button deleteImageBtn;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private Vlc.DotNet.Forms.VlcControl vlcControl1;
 
         /// <summary>
         /// Required designer variable.
@@ -58,8 +59,10 @@ namespace ImageSorter
             this.DirImageBtn = new System.Windows.Forms.Button();
             this.deleteImageBtn = new System.Windows.Forms.Button();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.vlcControl1 = new Vlc.DotNet.Forms.VlcControl();
             ((System.ComponentModel.ISupportInitialize)(this.onlyPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).BeginInit();
             this.SuspendLayout();
             // 
             // onlyPictureBox
@@ -136,12 +139,25 @@ namespace ImageSorter
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(923, 656);
             this.axWindowsMediaPlayer1.TabIndex = 7;
             // 
+            // vlcControl1
+            // 
+            this.vlcControl1.BackColor = System.Drawing.Color.Black;
+            this.vlcControl1.Location = new System.Drawing.Point(195, 340);
+            this.vlcControl1.Name = "vlcControl1";
+            this.vlcControl1.Size = new System.Drawing.Size(350, 227);
+            this.vlcControl1.Spu = -1;
+            this.vlcControl1.TabIndex = 8;
+            this.vlcControl1.Text = "vlcControl1";
+            this.vlcControl1.VlcLibDirectory = null;
+            this.vlcControl1.VlcMediaplayerOptions = null;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1584, 861);
+            this.Controls.Add(this.vlcControl1);
             this.Controls.Add(this.deleteImageBtn);
             this.Controls.Add(this.DirImageBtn);
             this.Controls.Add(this.recieveFolderTb);
@@ -155,6 +171,7 @@ namespace ImageSorter
             this.Text = "ImageSorter";
             ((System.ComponentModel.ISupportInitialize)(this.onlyPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vlcControl1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,6 +201,8 @@ namespace ImageSorter
                 }    
             }
         }
+
+        
     }
 }
 
