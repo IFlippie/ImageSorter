@@ -27,7 +27,7 @@ namespace ImageSorter
             imageFolderTb.Text = imageFolderDialog.SelectedPath;
             imageCounter = 0;
             imagesFolderSelected = true;
-            //LoadNewImages();
+            LoadNewImages();
         }
 
         private void RecieveFolderBtn_Click(object sender, EventArgs e)
